@@ -10,21 +10,27 @@
         <meta name="author" content="AWS">
       
       
+        <link rel="canonical" href="https://aws-ia.github.io/terraform-aws-eks-blueprints/main/blueprints/okta-single-sign-on/">
       
       
-      <link rel="icon" href="/terraform-aws-eks-blueprints/main/images/colored-logo.png">
+        <link rel="prev" href="../multi-tenancy-with-teams/">
+      
+      
+        <link rel="next" href="../private-public-ingress/">
+      
+      <link rel="icon" href="../../images/colored-logo.png">
       <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.19">
     
     
       
-        <title>Amazon EKS Blueprints for Terraform</title>
+        <title>Okta Single Sign-On - Amazon EKS Blueprints for Terraform</title>
       
     
     
-      <link rel="stylesheet" href="/terraform-aws-eks-blueprints/main/assets/stylesheets/main.eebd395e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
       
         
-        <link rel="stylesheet" href="/terraform-aws-eks-blueprints/main/assets/stylesheets/palette.ecc896b0.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
       
       
   
@@ -81,7 +87,7 @@
       
     
     
-    <script>__md_scope=new URL("/terraform-aws-eks-blueprints/main",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -105,6 +111,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#okta-single-sign-on-for-amazon-eks-cluster" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -121,9 +132,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/terraform-aws-eks-blueprints/main/." title="Amazon EKS Blueprints for Terraform" class="md-header__button md-logo" aria-label="Amazon EKS Blueprints for Terraform" data-md-component="logo">
+    <a href="../.." title="Amazon EKS Blueprints for Terraform" class="md-header__button md-logo" aria-label="Amazon EKS Blueprints for Terraform" data-md-component="logo">
       
-  <img src="/terraform-aws-eks-blueprints/main/images/white-logo.png" alt="logo">
+  <img src="../../images/white-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -139,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Okta Single Sign-On
             
           </span>
         </div>
@@ -220,9 +231,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/terraform-aws-eks-blueprints/main/." title="Amazon EKS Blueprints for Terraform" class="md-nav__button md-logo" aria-label="Amazon EKS Blueprints for Terraform" data-md-component="logo">
+    <a href="../.." title="Amazon EKS Blueprints for Terraform" class="md-nav__button md-logo" aria-label="Amazon EKS Blueprints for Terraform" data-md-component="logo">
       
-  <img src="/terraform-aws-eks-blueprints/main/images/white-logo.png" alt="logo">
+  <img src="../../images/white-logo.png" alt="logo">
 
     </a>
     Amazon EKS Blueprints for Terraform
@@ -250,7 +261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Overview
       </a>
     </li>
@@ -265,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -278,14 +289,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -294,7 +307,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Blueprints
@@ -307,7 +320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/agones-game-controller/" class="md-nav__link">
+      <a href="../agones-game-controller/" class="md-nav__link">
         Agones Game Controller
       </a>
     </li>
@@ -321,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/appmesh-mtls/" class="md-nav__link">
+      <a href="../appmesh-mtls/" class="md-nav__link">
         AWS AppMesh mTLS
       </a>
     </li>
@@ -335,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/argocd/" class="md-nav__link">
+      <a href="../argocd/" class="md-nav__link">
         ArgoCD
       </a>
     </li>
@@ -349,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/blue-green-upgrade/" class="md-nav__link">
+      <a href="../blue-green-upgrade/" class="md-nav__link">
         Blue/Green Migration
       </a>
     </li>
@@ -363,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/elastic-fabric-adapter/" class="md-nav__link">
+      <a href="../elastic-fabric-adapter/" class="md-nav__link">
         Elastic Fabric Adapter
       </a>
     </li>
@@ -377,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/external-secrets/" class="md-nav__link">
+      <a href="../external-secrets/" class="md-nav__link">
         External Secrets
       </a>
     </li>
@@ -391,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/fargate-serverless/" class="md-nav__link">
+      <a href="../fargate-serverless/" class="md-nav__link">
         Fargate Serverless
       </a>
     </li>
@@ -405,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/fully-private-cluster/" class="md-nav__link">
+      <a href="../fully-private-cluster/" class="md-nav__link">
         Fully Private Cluster
       </a>
     </li>
@@ -419,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/iam-identity-center-single-sign-on/" class="md-nav__link">
+      <a href="../iam-identity-center-single-sign-on/" class="md-nav__link">
         Okta Single Sign-On
       </a>
     </li>
@@ -433,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/ipv4-prefix-delegation/" class="md-nav__link">
+      <a href="../ipv4-prefix-delegation/" class="md-nav__link">
         IPv4 Prefix Delegation
       </a>
     </li>
@@ -447,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/ipv6-eks-cluster/" class="md-nav__link">
+      <a href="../ipv6-eks-cluster/" class="md-nav__link">
         IPv6 Networking
       </a>
     </li>
@@ -461,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/istio-multi-cluster/" class="md-nav__link">
+      <a href="../istio-multi-cluster/" class="md-nav__link">
         Istio - Multi-Cluster
       </a>
     </li>
@@ -475,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/istio/" class="md-nav__link">
+      <a href="../istio/" class="md-nav__link">
         Istio
       </a>
     </li>
@@ -489,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/karpenter/" class="md-nav__link">
+      <a href="../karpenter/" class="md-nav__link">
         Karpenter
       </a>
     </li>
@@ -503,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/multi-tenancy-with-teams/" class="md-nav__link">
+      <a href="../multi-tenancy-with-teams/" class="md-nav__link">
         Multi-Tenancy w/ Teams
       </a>
     </li>
@@ -515,11 +528,73 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/okta-single-sign-on/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Okta Single Sign-On
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Okta Single Sign-On
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    Deploy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    Validate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#destroy" class="md-nav__link">
+    Destroy
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -531,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/private-public-ingress/" class="md-nav__link">
+      <a href="../private-public-ingress/" class="md-nav__link">
         Private and Public Ingress
       </a>
     </li>
@@ -545,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/privatelink-access/" class="md-nav__link">
+      <a href="../privatelink-access/" class="md-nav__link">
         PrivateLink Access
       </a>
     </li>
@@ -559,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/stateful/" class="md-nav__link">
+      <a href="../stateful/" class="md-nav__link">
         Stateful
       </a>
     </li>
@@ -573,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/tls-with-aws-pca-issuer/" class="md-nav__link">
+      <a href="../tls-with-aws-pca-issuer/" class="md-nav__link">
         TLS w/ AWS PCA Issuer
       </a>
     </li>
@@ -587,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/vpc-cni-custom-networking/" class="md-nav__link">
+      <a href="../vpc-cni-custom-networking/" class="md-nav__link">
         VPC CNI Custom Networking
       </a>
     </li>
@@ -601,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/blueprints/wireguard-with-cilium/" class="md-nav__link">
+      <a href="../wireguard-with-cilium/" class="md-nav__link">
         Wireguard /w Cilium
       </a>
     </li>
@@ -650,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/iam/minimum-iam-policy/" class="md-nav__link">
+      <a href="../../iam/minimum-iam-policy/" class="md-nav__link">
         Minimum IAM policy
       </a>
     </li>
@@ -699,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/v4-to-v5/motivation/" class="md-nav__link">
+      <a href="../../v4-to-v5/motivation/" class="md-nav__link">
         Motivation
       </a>
     </li>
@@ -713,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/v4-to-v5/cluster/" class="md-nav__link">
+      <a href="../../v4-to-v5/cluster/" class="md-nav__link">
         Cluster
       </a>
     </li>
@@ -727,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/v4-to-v5/addons/" class="md-nav__link">
+      <a href="../../v4-to-v5/addons/" class="md-nav__link">
         Addons
       </a>
     </li>
@@ -741,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/v4-to-v5/teams/" class="md-nav__link">
+      <a href="../../v4-to-v5/teams/" class="md-nav__link">
         Teams
       </a>
     </li>
@@ -763,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/terraform-aws-eks-blueprints/main/faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         FAQ
       </a>
     </li>
@@ -787,6 +862,44 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    Deploy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    Validate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#destroy" class="md-nav__link">
+    Destroy
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -798,8 +911,91 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+  
+  
+
+
+<!-- BEGIN INCLUDE ../../examples/single-sign-on/okta/README.md -->
+<h1 id="okta-single-sign-on-for-amazon-eks-cluster">Okta Single Sign-On for Amazon EKS Cluster<a class="headerlink" href="#okta-single-sign-on-for-amazon-eks-cluster" title="Permanent link">&para;</a></h1>
+<p>This example demonstrates how to deploy an Amazon EKS cluster that is deployed on the AWS Cloud, integrated with Okta as an the Identity Provider (IdP) for Single Sign-On (SSO) authentication. The configuration for authorization is done using Kubernetes Role-based access control (RBAC).</p>
+<h2 id="prerequisites">Prerequisites:<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Ensure that you have the following tools installed locally:</p>
+<ol>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html">aws cli</a></li>
+<li><a href="https://Kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li><a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">terraform</a></li>
+<li><a href="https://github.com/int128/kubelogin">kubelogin</a></li>
+</ol>
+<p>Also make sure you have enabled the following Okta resource:</p>
+<ol>
+<li><a href="https://okta.com/../../examples/single-sign-on/okta">Okta Account</a>.</li>
+<li><a href="https://developer.okta.com/docs/concepts/okta-organizations/">Okta Organization</a></li>
+<li><a href="https://developer.okta.com/docs/guides/create-an-api-token/main/">Okta API Token</a></li>
+</ol>
+<h2 id="deploy">Deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h2>
+<p>To provision this example, populate the Okta provider credentials, in the <code>okta.tf</code> file.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>provider &quot;okta&quot; {
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  org_name  = &quot;dev-&lt;ORG_ID&gt;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  base_url  = &quot;okta.com&quot;
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  api_token = &quot;&lt;OKTA_APU_TOKEN&gt;&quot;
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>}
+</span></code></pre></div>
+<p>Then run the following commands:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>terraform<span class="w"> </span>init
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-target<span class="w"> </span>module.vpc
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-target<span class="w"> </span>module.eks
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>terraform<span class="w"> </span>apply
+</span></code></pre></div>
+<p>Enter <code>yes</code> at command prompt to apply</p>
+<h2 id="validate">Validate<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h2>
+<p>After the <code>terraform</code> commands are executed sucessfully, check if the newly created users are active.</p>
+<p>To do that use the link provided in the email invite if you added a valid email address for your users, or go to the <a href="https://dev-ORGID-admin.okta.com/admin/users/">Okta Admin Dashboard</a>, select the user, and click on <em>Set Password and Activate</em> button.</p>
+<p>With the active users, use the <code>terraform output</code> example to setup your <code>kubeconfig</code> profile to authenticate through Okta.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>configure_kubeconfig = &lt;&lt;EOT
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    kubectl config set-credentials oidc \
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>      --exec-api-version=client.authentication.k8s.io/v1beta1 \
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>      --exec-command=kubectl \
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>      --exec-arg=oidc-login \
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>      --exec-arg=get-token \
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>      --exec-arg=--oidc-issuer-url=https://dev-ORGID.okta.com/oauth2/1234567890abcdefghij \
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>      --exec-arg=--oidc-client-id=1234567890abcdefghij
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>      --exec-arg=--oidc-extra-scope=&quot;email offline_access profile openid&quot;
+</span></code></pre></div>
+<p>With the <code>kubeconfig</code> configured, you'll be able to run <code>kubectl</code> commands in your Amazon EKS Cluster using the <code>--user</code> cli option to impersonate the Okta authenticated user. When <code>kubectl</code> command is issued with the <code>--user</code> option for the first time, your browser window will open and require you to authenticate.</p>
+<p>The read-only user has a <code>cluster-viewer</code> Kubernetes role bound to it's group, whereas the admin user, has the <code>admin</code> Kubernetes role bound to it's group.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl get pods -A  
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>NAMESPACE          NAME                        READY   STATUS    RESTARTS   AGE
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>amazon-guardduty   aws-guardduty-agent-bl2v2   1/1     Running   0          3h54m
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>amazon-guardduty   aws-guardduty-agent-sqvcx   1/1     Running   0          3h54m
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>amazon-guardduty   aws-guardduty-agent-w8gfc   1/1     Running   0          3h54m
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>kube-system        aws-node-m9hmd              1/1     Running   0          3h53m
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>kube-system        aws-node-w42b8              1/1     Running   0          3h53m
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>kube-system        aws-node-wm6rm              1/1     Running   0          3h53m
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>kube-system        coredns-6ff9c46cd8-94jlr    1/1     Running   0          3h59m
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>kube-system        coredns-6ff9c46cd8-nwmrb    1/1     Running   0          3h59m
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>kube-system        kube-proxy-7fb86            1/1     Running   0          3h54m
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>kube-system        kube-proxy-p4f5g            1/1     Running   0          3h54m
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>kube-system        kube-proxy-qkfmc            1/1     Running   0          3h54m
+</span></code></pre></div>
+<p>You can also use the <code>configure_kubectl</code> output to assume the <em>Cluster creator</em> role with <code>cluster-admin</code> access.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>configure_kubectl = &quot;aws eks --region us-west-2 update-kubeconfig --name okta&quot;
+</span></code></pre></div>
+<p>It's also possible to preconfigure your <code>kubeconfig</code> using the <code>okta_login</code> output. This will also require you to authenticate in a browser window.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>okta_login = &quot;kubectl oidc-login setup --oidc-issuer-url=https://dev-ORGID.okta.com/oauth2/1234567890abcdefghij--oidc-client-id=1234567890abcdefghij&quot;
+</span></code></pre></div>
+<h2 id="destroy">Destroy<a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h2>
+<p>To teardown and remove the resources created in this example:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>terraform<span class="w"> </span>destroy<span class="w"> </span>-auto-approve
+</span></code></pre></div>
+<!-- END INCLUDE -->
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -835,10 +1031,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "/terraform-aws-eks-blueprints/main", "features": ["navigation.tabs.sticky"], "search": "/terraform-aws-eks-blueprints/main/assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="/terraform-aws-eks-blueprints/main/assets/javascripts/bundle.220ee61c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>
